@@ -45,14 +45,14 @@
                         </a>
                     </li> {% endcomment %}
                     <li class="nav-item d-md-none">
-                        <a class="nav-link disabled" href="{% url 'users:register' %}">
+                        <a class="nav-link" href="{% url 'users:login' %}">
                             <span>
                                 {% bs_icon 'check-circle' %} Logowanie
                             </span>
                         </a>
                     </li>
                     <li class="nav-item mx-2 d-none d-md-inline">
-                        <a class="btn btn-secondary disabled" href="{% url 'users:register' %}">
+                        <a class="btn btn-secondary" href="{% url 'users:login' %}">
                             <span aria-label="Login" title="Login">
                                 {% bs_icon 'check-circle' %} Logowanie
                             </span>
