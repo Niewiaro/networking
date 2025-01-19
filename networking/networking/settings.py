@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django_bootstrap_icons",
     "main",
     "users",
+    "card",
 ]
 
 MIDDLEWARE = [
