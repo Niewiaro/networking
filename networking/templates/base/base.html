@@ -42,6 +42,15 @@
 
                     {% if user.is_authenticated %}
 
+                        {% comment %} Login {% endcomment %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'card:list' %}">
+                                <span>
+                                    {% bs_icon 'card-checklist' %} Wizytówki
+                                </span>
+                            </a>
+                        </li>
+
                         {% comment %} Logout {% endcomment %}
                         <li class="nav-item">
                             <form action="{% url 'users:logout' %}" method="post">
