@@ -8,6 +8,9 @@
 {% block content %}
   <section class="container my-5">
     <div class="card shadow-lg p-4" style="max-width: 600px; margin: auto;">
+      {% if card.image %}
+        <img src="{{ card.image.url }}" class="card-img-top" alt="{{ card.full_name }}" />
+      {% endif %}
       <div class="card-body text-center">
         <h2 class="card-title fw-bold">{{ card.full_name }}</h2>
         <h4 class="card-subtitle text-muted">{{ card.company_name }}</h4>
@@ -16,13 +19,11 @@
 
         <div class="contact-info text-start">
           <p>
-            <strong>{% bs_icon 'phone' %} Phone:</strong> 
+            <strong>{% bs_icon 'phone' %}Phone:</strong>
           </p>
-          <p class="display-6 mb-2">
-            {{ card.phone_number }}
-          </p>
+          <p class="display-6 mb-2">{{ card.phone_number }}</p>
           <p>
-            <strong>{% bs_icon 'envelope-at-fill' %} Email:</strong> 
+            <strong>{% bs_icon 'envelope-at-fill' %}Email:</strong>
           </p>
           <p class="display-6 mb-2">
             <a href="mailto:{{ card.email }}">{{ card.email }}</a>
@@ -40,25 +41,25 @@
         <div class="my-3 tab-content" id="urlTabContent">
           <div class="tab-pane fade show active" id="slug" role="tabpanel" aria-labelledby="slug-tab">
             <figure class="text-start">
-                <blockquote class="blockquote">
-                  <p>Slug</p>
-                </blockquote>
-                <figcaption class="blockquote-footer">Dynamiczny, edytowalny link do profilu</figcaption>
-              </figure>
+              <blockquote class="blockquote">
+                <p>Slug</p>
+              </blockquote>
+              <figcaption class="blockquote-footer">Dynamiczny, edytowalny link do profilu</figcaption>
+            </figure>
 
             <a href="{% url 'card:page_by_slug' identifier=card.slug %}">{{ card.slug }}</a>
           </div>
           <div class="tab-pane fade" id="uuid" role="tabpanel" aria-labelledby="uuid-tab">
             <figure class="text-start">
-                <blockquote class="blockquote">
-                  <p>UUID</p>
-                </blockquote>
-                <figcaption class="blockquote-footer">Statyczny link do profilu, primary_key w bazie danych</figcaption>
-              </figure>
+              <blockquote class="blockquote">
+                <p>UUID</p>
+              </blockquote>
+              <figcaption class="blockquote-footer">Statyczny link do profilu, primary_key w bazie danych</figcaption>
+            </figure>
 
             <a href="{% url 'card:page_by_id' identifier=card.id %}">{{ card.id }}</a>
           </div>
-        </div>      
+        </div>
 
         <a href="{% url 'card:list' %}" class="btn btn-primary mt-3">Wróć do listy wizytówek</a>
       </div>
