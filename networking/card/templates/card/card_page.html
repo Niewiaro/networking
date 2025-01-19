@@ -58,14 +58,13 @@
 
             <a href="{% url 'card:page_by_id' identifier=card.id %}">{{ card.id }}</a>
           </div>
-        </div>
-
-        <hr class="my-3" />
-
-        <p class="text-muted small">Created: {{ card.created_at|date:'d M Y, H:i' }}</p>
-        <p class="text-muted small">Last Updated: {{ card.updated_at|date:'d M Y, H:i' }}</p>
+        </div>      
 
         <a href="{% url 'card:list' %}" class="btn btn-primary mt-3">Wróć do listy wizytówek</a>
+      </div>
+      <div class="card-footer text-muted text-center">
+        <p class="text-muted small">Created: {{ card.created_at|date:'d M Y, H:i' }}</p>
+        <p class="text-muted small">Last Updated: {{ card.updated_at|date:'d M Y, H:i' }}</p>
       </div>
     </div>
   </section>
