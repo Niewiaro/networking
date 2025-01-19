@@ -42,11 +42,27 @@
 
                     {% if user.is_authenticated %}
 
-                        {% comment %} Login {% endcomment %}
+                        {% comment %} Cards list {% endcomment %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'card:list' %}">
                                 <span>
                                     {% bs_icon 'card-checklist' %} Wizytówki
+                                </span>
+                            </a>
+                        </li>
+
+                        {% comment %} Card {% endcomment %}
+                        <li class="nav-item d-md-none">
+                            <a class="nav-link" href="{% url 'card:new' %}">
+                                <span>
+                                    {% bs_icon 'person-vcard-fill' %} Nowa wizytówka
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item mx-2 d-none d-md-inline">
+                            <a class="btn btn-secondary" href="{% url 'card:new' %}">
+                                <span aria-label="Login" title="Login">
+                                    {% bs_icon 'person-vcard-fill' %} Nowa wizytówka
                                 </span>
                             </a>
                         </li>
