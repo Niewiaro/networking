@@ -8,12 +8,16 @@
   <section>
     <p class="display-1 m-5">Business Cards</p>
 
-    <div class="row justify-content-center">
+      {% comment %} <div class="row row-cols-1 row-cols-md-3 g-4 mx-4"> {% endcomment %}
+      <div class="row">
       {% for card in cards %}
-        <div class="col-auto card" style="width: 18rem;">
+      <div class="col m-3">
+        <div class="card" style="max-width: 20rem;">
+          {% if card.image %}
+            <img src="{{ card.image.url }}" class="card-img-top" alt="{{ card.full_name }}" />
+          {% endif %}
           <div class="card-body">
             <h3 class="card-title"><a href="{% url 'card:page_by_slug' identifier=card.slug %}">{{ card.full_name }}</a></h3>
-            <h3 class="card-title"><a href="{% url 'card:page_by_id' identifier=card.id %}">{{ card.full_name }}</a></h3>
             <h4 class="card-subtitle mb-2 text-muted">{{ card.company_name }}</h4>
             <p class="card-text">
               <figure class="text-end">
@@ -25,6 +29,7 @@
             </p>
           </div>
         </div>
+      </div>
       {% endfor %}
     </div>
   </section>

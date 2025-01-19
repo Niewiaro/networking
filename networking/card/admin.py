@@ -31,6 +31,14 @@ class BusinessCardAdmin(admin.ModelAdmin):
             },
         ),
         (
+            "Files",
+            {
+                "fields": ("image",),
+                "description": "Business Card files",
+                "classes": ("collapse",),
+            },
+        ),
+        (
             "Info",
             {
                 "fields": (
