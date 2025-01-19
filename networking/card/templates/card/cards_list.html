@@ -1,5 +1,4 @@
 {% extends 'base/base.html' %}
-{% load bootstrap5 %}
 
 {% block title %}
   Business Cards
@@ -13,7 +12,8 @@
       {% for card in cards %}
         <div class="col-auto card" style="width: 18rem;">
           <div class="card-body">
-            <h3 class="card-title">{{ card.full_name }}</h3>
+            <h3 class="card-title"><a href="{% url 'card:page_by_slug' identifier=card.slug %}">{{ card.full_name }}</a></h3>
+            <h3 class="card-title"><a href="{% url 'card:page_by_id' identifier=card.id %}">{{ card.full_name }}</a></h3>
             <h4 class="card-subtitle mb-2 text-muted">{{ card.company_name }}</h4>
             <p class="card-text">
               <figure class="text-end">
@@ -25,7 +25,6 @@
             </p>
           </div>
         </div>
-        <p></p>
       {% endfor %}
     </div>
   </section>
