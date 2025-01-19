@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
+from django.utils.text import slugify
 
 
 class BusinessCard(models.Model):
@@ -16,6 +17,17 @@ class BusinessCard(models.Model):
     email = models.EmailField()
 
     slug = models.SlugField(unique=True, blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.full_name)
+            unique_slug = base_slug
+            counter = 1
+            while BusinessCard.objects.filter(slug=unique_slug).exists():
+                unique_slug = f"{base_slug}-{counter}"
+                counter += 1
+            self.slug = unique_slug
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.full_name} @{self.company_name} (ID: {self.id})"
