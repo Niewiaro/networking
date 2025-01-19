@@ -22,6 +22,4 @@ def card_page(request, identifier):
     else:  # W przeciwnym razie traktujemy jako slug
         card = get_object_or_404(BusinessCard, slug=identifier)
 
-    from django.http import HttpResponse
-
-    return HttpResponse(identifier)
+    return render(request, "card/card_page.html", {"card": card})
